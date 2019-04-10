@@ -33,7 +33,7 @@ goto end
 
 :z
 if exist function.zip del function.zip
-7z a -r -y function.zip .\*\ lambda_function.py tokens.tk
+7z a -r -y -xr!.\.git/ function.zip .\*\ lambda_function.py tokens.tk
 goto end
 
 :end

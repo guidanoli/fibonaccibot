@@ -2,9 +2,9 @@
 echo.
 echo 	Lista de comandos aceitos:
 echo. 
-echo 	c	cycle (run indefinitely)
+echo 	c	cycle (run many iterations)
 echo 	d	debug (run one iteration)
-echo 	rp	remove all posts
+echo 	r	remove all posts
 echo 	z	zip
 echo.
 
@@ -27,14 +27,16 @@ goto c_loop
 python debug.py
 goto end
 
-:rp
+:r
 python remove_all_posts.py
 goto end
 
 :z
 if exist function.zip del function.zip
-7z a -r -y function.zip .\*\ lambda_function.py protected.ids tokens.tk
+7z a -r -y function.zip .\*\ lambda_function.py tokens.tk
 goto end
 
 :end
 pause
+cls
+call manage.bat

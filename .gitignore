@@ -9,9 +9,9 @@ idna/
 idna-2.8.dist-info/
 requests/
 requests-2.21.0.dist-info/
-tokens.tk/
 urllib3/
 urllib3-1.24.1.dist-info/
 __pycache__/
 
+tokens.tk
 *.zip

@@ -26,7 +26,8 @@ def lambda_handler(event, context):
         post_id = p["id"]
         if ("message" in p):
             msg = p["message"]
-            if (re.findall("F\(.*\) = .*",msg)[0] == msg):
+            found = re.findall("F\(.*\) = .*",msg)
+            if (len(found) > 0 and found[0] == msg):
                 valid_posts.append(p)
 
     msg = ""

@@ -23,7 +23,8 @@ for p in posts:
     if ("message" in p):
         import re
         msg = p["message"]
-        if (re.findall("F\(.*\) = .*",msg)[0] == msg):
+        found = re.findall("F\(.*\) = .*",msg)
+        if ( len(found) > 0 and found[0] == msg):
             try:
                 graph.delete_object(post_id)
                 print("Post #"+post_id+" has been deleted")

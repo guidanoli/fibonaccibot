@@ -1,11 +1,16 @@
 @echo off
+if NOT "%1"=="" goto %1
+:beggining
+cls
 echo.
-echo 	Lista de comandos aceitos:
+echo 	Accepted commands:
 echo. 
 echo 	c	cycle (run many iterations)
 echo 	d	debug (run one iteration)
+echo 	g	generate Facebook SDK layer
 echo 	r	remove all posts
-echo 	z	zip
+echo 	t	register new token
+echo 	z	zip files to aws lambda
 echo.
 
 set /p i=" >>> "
@@ -14,29 +19,53 @@ goto %i%
 :c
 echo.
 set /p iterations=" #iterations = "
-set /a counter = 1
+if %iterations% EQU 1 goto d
+if %iterations% EQU 0 goto beggining
+if %iterations% LSS 0 (
 echo.
-:c_loop
-echo Iteration #%counter% --------------
-python debug.py
-set /a counter += 1
-if %counter% GTR %iterations% goto end
-goto c_loop
+echo Invalid!
+echo.
+goto hold
+)
+echo.
+echo from fibonacci import FibonacciBot>cycle.py
+echo for i in range(%iterations%):>>cycle.py
+echo 	print("Iteration #{} ---------------------".format(i+1))>>cycle.py
+echo 	FibonacciBot(0,0)>>cycle.py
+echo print("\nDone iterating %iterations% posts!\n")>>cycle.py
+python cycle.py
+del cycle.py
+goto hold
 
 :d
-python debug.py
-goto end
+python -c "from fibonacci import FibonacciBot; FibonacciBot(0,0)"
+goto hold
+
+:g
+if exist .\python rd /s /q .\python
+if exist facebook-sdk-layer.zip del facebook-sdk-layer.zip
+pip install facebook-sdk --target .\python
+7z a -r -sdel facebook-sdk-layer.zip .\python
+goto hold
+
+:t
+set /p token=" token = "
+echo %token%>tokens.tk
+echo New token registered.
+timeout /t 1 /nobreak > NUL
+goto beggining
 
 :r
-python remove_all_posts.py
-goto end
+python remove.py
+goto hold
 
 :z
-if exist function.zip del function.zip
-7z a -r -y -xr!.\.git/ function.zip .\*\ lambda_function.py tokens.tk
-goto end
+if exist lambda.zip del lambda.zip
+7z a -y lambda.zip fibonacci.py tokens.tk
+goto hold
 
-:end
+:hold
+if exist .\__pycache__ rd /s /q .\__pycache__
 pause
 cls
-call manage.bat
+goto beggining

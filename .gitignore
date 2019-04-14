@@ -1,17 +1,8 @@
-bin/
-certifi/
-certifi-2019.3.9.dist-info/
-chardet/
-chardet-3.0.4.dist-info/
-facebook/
-facebook_sdk-3.1.0.dist-info/
-idna/
-idna-2.8.dist-info/
-requests/
-requests-2.21.0.dist-info/
-urllib3/
-urllib3-1.24.1.dist-info/
+# Byte-compiled / optimized / DLL files
 __pycache__/
 
-tokens.tk
+# Confidential files
+*.tk
+
+# Compressed files
 *.zip

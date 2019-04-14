@@ -1,11 +1,13 @@
-import json, facebook
+import json, facebook, re
 
-def lambda_handler(event, context):
+def IsBotMessage(msg):
     import re
-    print("Lambda Function running...")
-    
+    regexp = re.findall("F\(.*\) = .*",msg)
+    return ( len(regexp) > 0 and regexp[0] == msg )
+
+def FibonacciBot(event, context):
+    print("Bot running...")
     token = ""
-    
     try:
         f = open("tokens.tk","r")
         token = f.readline()
@@ -16,22 +18,16 @@ def lambda_handler(event, context):
 
     graph = facebook.GraphAPI(access_token=token)
     valid_posts = []
-
-    print("Updating protected posts list...")
+    print("Gathering last two iterations...")
     posts = graph.get_connections("me","feed")["data"]
-
     for p in posts:
         if len(valid_posts)>= 2:
             break
-        post_id = p["id"]
-        if ("message" in p):
-            msg = p["message"]
-            found = re.findall("F\(.*\) = .*",msg)
-            if (len(found) > 0 and found[0] == msg):
-                valid_posts.append(p)
-
+        if ("message" in p and IsBotMessage(p["message"]) ):
+            valid_posts.append(p)
+                
     msg = ""
-
+    print("Calculating current iteration...")
     if( len(valid_posts) == 0 ):
         msg = "F(0) = 1"
     elif( len(valid_posts) == 1 ):
@@ -41,15 +37,16 @@ def lambda_handler(event, context):
         p1 = valid_posts[1]["message"]
         n0 = int(p0.split(' ')[-1])
         n1 = int(p1.split(' ')[-1])
-        n_novo = n0 + n1
-        contagem = int(re.findall("F\((.*)\)",p0)[0])+1
-        msg = "F({}) = {}".format(contagem,n_novo)
-
+        n2 = n0 + n1
+        count = int(re.findall("F\((.*)\)",p0)[0])+1
+        msg = "F({}) = {}".format(count,n2)
+        
     try:
         post = graph.put_object("me", "feed", message=msg)
-        print("Message posted: \""+msg+"\"")
+        print("Message posted: \""+msg+"\".")
         print(json.dumps(post))
     except facebook.GraphAPIError:
-        print("An error occurred while trying to post message.")
-    
+        print("An error occurred while trying to post to feed.")
+        return
+        
     return

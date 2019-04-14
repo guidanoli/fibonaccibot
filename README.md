@@ -2,14 +2,7 @@
 
 This bot is a proof of concept: bots that depend on previous posts to output a new one.
 
-I couldn't think of a better way to demonstrate this than with the famous [Fibonacci sequence](https://en.wikipedia.org/wiki/Fibonacci_number). a pattern with natural properties found all over nature. It is ruled by a simple recursive definition.
-$$
-\forall x \ge 2\enspace F_n = F_{n-1} + F_{n-2}
-$$
-
-$$
-F_0 = F_1 = 1
-$$
+I couldn't think of a better way to demonstrate this than with the famous [Fibonacci sequence](https://en.wikipedia.org/wiki/Fibonacci_number). a pattern with natural properties found all over nature. It is also ruled by a simple recursive definition, which facilitates the computation a lot.
 
 This project also helped me to get used to [GraphAPI](https://developers.facebook.com/docs/graph-api/), [Amazon Web Services Lamba](https://aws.amazon.com/pt/lambda/) and to the growing Facebook bot community. So I write this documentation focusing on those interested in messing around with these tools by themselves, and, hopefully, create bots of their own.
 

@@ -9,7 +9,10 @@ echo 	c	cycle (run many iterations)
 echo 	d	debug (run one iteration)
 echo 	g	generate Facebook SDK layer
 echo 	r	remove all posts
-echo 	t	register new token
+echo 	tc	show current token
+echo 	td	delete token from list
+echo 	tr	register (new) token in list
+echo 	ts	select token from list
 echo 	z	zip files to aws lambda
 echo.
 
@@ -48,12 +51,15 @@ pip install facebook-sdk --target .\python
 7z a -r -sdel facebook-sdk-layer.zip .\python
 goto hold
 
-:t
-set /p token=" token = "
-echo %token%>tokens.tk
-echo New token registered.
-timeout /t 1 /nobreak > NUL
-goto beggining
+:tc
+:td
+:tr
+:ts
+echo from tokenManager import launch>tkmng.py
+echo launch("%i%")>>tkmng.py
+python tkmng.py
+del tkmng.py
+goto hold
 
 :r
 python remove.py

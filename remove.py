@@ -53,7 +53,7 @@ def ConstrainString( s, tam, dots ):
 
 token = ""
 try:
-    f = open("tokens.tk","r")
+    f = open("token.tk","r")
     token = f.readline()
     f.close()
 except IOError:

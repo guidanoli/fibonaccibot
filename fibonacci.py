@@ -9,7 +9,7 @@ def FibonacciBot(event, context):
     print("Bot running...")
     token = ""
     try:
-        f = open("tokens.tk","r")
+        f = open("token.tk","r")
         token = f.readline()
         f.close()
     except IOError:

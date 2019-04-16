@@ -1,5 +1,8 @@
 import json, facebook, re
 from fibonacci import IsBotMessage
+from mngSettings import getSetting
+
+TKNCURR_PATH = getSetting("tokenpath")
 
 removal_log = []
 
@@ -53,7 +56,7 @@ def ConstrainString( s, tam, dots ):
 
 token = ""
 try:
-    f = open("token.tk","r")
+    f = open(TKNCURR_PATH,"r")
     token = f.readline()
     f.close()
 except IOError:

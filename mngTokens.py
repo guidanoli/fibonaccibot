@@ -1,8 +1,10 @@
 # Token Manager
 # guidanoli
 
-TKNLIST_PATH = "tknlist.tk"
-TKNCURR_PATH = "token.tk"
+from mngSettings import getSetting
+
+TKNLIST_PATH = getSetting("tknlistpath")
+TKNCURR_PATH = getSetting("tokenpath")
 
 def formatLabel( label ):
     # make safe filename out of label

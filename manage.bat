@@ -9,6 +9,9 @@ echo 	c	cycle (run many iterations)
 echo 	d	debug (run one iteration)
 echo 	g	generate Facebook SDK layer
 echo 	r	remove all posts
+echo 	sd	set settings to default
+echo 	se	edit settings
+echo 	sv	view settings
 echo 	tc	show current token
 echo 	td	delete token from list
 echo 	tr	register (new) token in list
@@ -55,7 +58,7 @@ goto hold
 :td
 :tr
 :ts
-echo from tokenManager import launch>tkmng.py
+echo from mngTokens import launch>tkmng.py
 echo launch("%i%")>>tkmng.py
 python tkmng.py
 del tkmng.py
@@ -63,6 +66,16 @@ goto hold
 
 :r
 python remove.py
+goto hold
+
+:sd
+:se
+:sv
+echo from mngSettings import launch>stgsmng.py
+echo launch("%i%")>>stgsmng.py
+echo.
+python stgsmng.py
+del stgsmng.py
 goto hold
 
 :z

@@ -1,5 +1,9 @@
 # Version Log
 
+#### v3.1 - April 24th 2019
+
+- Bot now posts a blank bar image to prevent spam alert
+
 #### v3 - April 16th 2019
 
 + Added "Commas" module

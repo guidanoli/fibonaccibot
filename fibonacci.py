@@ -86,7 +86,7 @@ def FibonacciBot(event, context):
         msg = FormatMessage( i["counter"], i["value"] )
         
     try:
-        post = graph.put_object("me", "feed", message=msg)
+        post = graph.put_photo(open("bar.png","rb"), message=msg)
         print("Message posted: \""+msg+"\".")
         print(json.dumps(post))
     except facebook.GraphAPIError:

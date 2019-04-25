@@ -1,5 +1,12 @@
 # Version Log
 
+#### v4 - April 25th 2019
+
+- Bot comments on post with fun trivia
+- Added "Comments" module
+- Updated Settings
+  - added Comments setting
+
 #### v3.1 - April 24th 2019
 
 - Bot now posts a blank bar image to prevent spam alert

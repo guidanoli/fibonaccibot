@@ -30,11 +30,12 @@ The reason I made a manager specifically for settings is quite odd. I asked thos
 
 These are the currently existing settings:
 
-| <u>Setting Label</u> | <u>Description</u>        | <u>Default Value</u> | **<u>Accepted values</u>** |
-| -------------------- | ------------------------- | -------------------- | -------------------------- |
-| commas               | Determines number format  | false                | true, false                |
-| tknlistpath          | Path to tokens list file  | tknlist.tk           | *.tk                       |
-| tokenpath            | Path to active token file | token.tk             | *.tk                       |
+| <u>Setting Label</u> | <u>Description</u>          | <u>Default Value</u> | **<u>Accepted values</u>** |
+| -------------------- | --------------------------- | -------------------- | -------------------------- |
+| commas               | Determines number format    | true                 | true, false                |
+| comments             | Allow bot comments on posts | true                 | true, false                |
+| tknlistpath          | Path to tokens list file    | tknlist.tk           | *.tk                       |
+| tokenpath            | Path to active token file   | token.tk             | *.tk                       |
 
 #### Token Manager
 

@@ -80,7 +80,7 @@ goto hold
 
 :z
 if exist lambda.zip del lambda.zip
-7z a -y lambda.zip fibonacci.py commas.py mngSettings.py bar.png *.cfg *.tk
+7z a -y lambda.zip fibonacci.py commas.py comments.py mngSettings.py bar.png *.cfg *.tk
 goto hold
 
 :hold

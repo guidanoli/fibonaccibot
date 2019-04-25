@@ -2,7 +2,8 @@
 # guidanoli
 
 DEFAULT_STGS = {
-    "commas": "false",
+    "commas": "true",
+    "comments": "true",
     "tknlistpath": "tknlist.tk",
     "tokenpath": "token.tk"
 }
@@ -18,6 +19,8 @@ def _validateFilename( filename , extension = "" ):
 def _validateEdit( label , new_value ):
     if label == "commas":
         return new_value in ["true","false"]
+    elif label == "comment":
+        return new_value in ["true", "false"]
     elif label == "tknlistpath":
         return _validateFilename(new_value,".tk")
     elif label == "tokenpath":
